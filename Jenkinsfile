@@ -1,6 +1,10 @@
 pipeline{
 	//agent any
-	agent{docker{image 'node:3.17-alpine' }}
+	agent{
+	docker{
+		image 'node:3.17-alpine' 
+		}
+	}
 	
 	stages{
 		stage('Build'){
