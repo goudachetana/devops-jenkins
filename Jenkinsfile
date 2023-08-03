@@ -1,9 +1,10 @@
-pipeline{
-	//agent any
-	agent {
-	
-	docker { image 'node:3.17-alpine' }
-		}
+pipeline {
+    agent { 
+        docker { 
+            image 'node:18.16.0-alpine'
+            
+        } 
+    }
 	
 	stages {
 		stage('Build'){
