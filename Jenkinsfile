@@ -30,6 +30,19 @@ pipeline{
 			}
 			
 		}
+	}
+	
+	post{
+		always{
+			echo "Iam always run"
+		}
+		success{
+			echo "Build and Testing is succesfull"
+		}
+		failure{
+			echo "build and testing is failure"
+		}
+		
 	}	
 		
 	
