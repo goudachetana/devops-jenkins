@@ -59,16 +59,41 @@ pipeline {
 			}
 			
 		}
-	/*stage('Build Docker Image'){
+		
+	stage('package'){
+		
 		steps{
-			docker build -t chetanagouda/hello-world-python-v3
+			
+			
+			sh "mvn package DskipTests"
+			}
+			
+		}	
+		
+		
+		
+		
+	stage('Build Docker Image'){
+		steps{
+			//"docker build -t chetanagouda/microservices-jenkins:$env.BUILD_TAG"
+			script{
+			
+				dockerImage=docker.build("chetanagouda/microservices-jenkins:${env.BUILD_TAG}")
+			}
 		}
 	}
+	
 	stage('Push Docker Image'){
 		steps{
+			scripts{
+				docker.withRegistry('','dockerhub'){
+					dockerImage.push();
+					dockerImage.push('latest');
+				}
+			}
 		
 		}
-	}*/
+	}
 	}
 	
 	post{
