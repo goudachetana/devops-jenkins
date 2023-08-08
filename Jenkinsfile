@@ -6,6 +6,11 @@ pipeline {
             
         } 
     }*/
+    	environment{
+    		dockerHome = tool 'docker_chetana'
+    		maveenHome = tool 'maveen-chetana'
+    		PATH="$dockerHome/bin:$maveenHome/bin:$PATH"
+    		}
 	
 	stages {
 		stage('Build'){
@@ -13,6 +18,8 @@ pipeline {
 		steps{
 			
 			//sh 'node --version'
+			sh 'mvn --version'
+			sh 'docker version'
 			echo "Build"
 			echo "PATH - $PATH"
 			echo "BUILD_NUMBER - $env.BUILD_NUMBER"
@@ -23,6 +30,11 @@ pipeline {
 			} 
 			
 		}
+	stage('Compile'){
+		steps{
+			sh "mvn clean compile"
+			}
+		}
 	
 			
 		
@@ -30,7 +42,8 @@ pipeline {
 		
 		steps{
 			
-			echo "Test"
+			//echo "Test"
+			sh "mvn test"
 			
 			}
 			
@@ -41,10 +54,21 @@ pipeline {
 		
 		steps{
 			
-			echo "Integration Test"
+			//echo "Integration Test"
+			sh "mvn failsafe:integration-test failsafe:verify"
 			}
 			
 		}
+	/*stage('Build Docker Image'){
+		steps{
+			docker build -t chetanagouda/hello-world-python-v3
+		}
+	}
+	stage('Push Docker Image'){
+		steps{
+		
+		}
+	}*/
 	}
 	
 	post{
