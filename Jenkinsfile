@@ -60,7 +60,7 @@ pipeline {
 			
 		}
 		
-	stage('package'){
+	stage('Package'){
 		
 		steps{
 			
