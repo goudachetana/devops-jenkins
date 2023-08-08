@@ -8,7 +8,7 @@ pipeline {
     }*/
     	environment{
     		dockerHome = tool 'docker_chetana'
-    		maveenHome = tool 'maveen-chetana'
+    		maveenHome = tool 'maveen_chetana'
     		PATH="$dockerHome/bin:$maveenHome/bin:$PATH"
     		}
 	
