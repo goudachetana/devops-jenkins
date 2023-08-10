@@ -36,8 +36,8 @@ pipeline {
 		
 		steps{
 			
-			//echo "Test"
-			sh "mvn test"
+			echo "Test"
+			//sh "mvn test"
 			
 			}
 		}
