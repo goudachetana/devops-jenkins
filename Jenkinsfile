@@ -49,12 +49,17 @@ pipeline {
 			//echo "Integration Test"
 			sh "mvn failsafe:integration-test failsafe:verify"
 			}
-			
 		}
 	
-	
-	
-		
+		stage('Build Docker Image'){
+		steps{
+			//"docker build -t chetanagouda/microservices-jenkins:$env.BUILD_TAG"
+			script{
+			
+				docker.build("chetanagouda/microservices-jenkins:${env.BUILD_TAG}")
+			}
+		}
+	}
 	
 	}
 	
