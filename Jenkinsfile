@@ -51,7 +51,7 @@ pipeline {
 			}
 		}
 	
-		stage('Build Docker Image'){
+		/*stage('Build Docker Image'){
 		steps{
 			//"docker build -t chetanagouda/microservices-jenkins:$env.BUILD_TAG"
 			script{
@@ -59,7 +59,7 @@ pipeline {
 				docker.build("chetanagouda/microservices-jenkins:${env.BUILD_TAG}")
 			}
 		}
-	}
+	}*/
 	
 	}
 	
